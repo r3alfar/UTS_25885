@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Item Detail</ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<ion-grid>
+    <ion-row>
+      <ion-col><ion-img style="width:300px;height: 300px; "[src]="loadedBarang.imageUrl"></ion-img></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1>{{loadedBarang.brandName}}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+  <ion-list>
+    <ion-item>
+      <ion-img style="width:250px;height: 250px; "[src]="loadedBarang.imageUrl"></ion-img>
+    </ion-item>
+    <ion-item>
+      <h3>{{loadedBarang.brandName}} {{loadedBarang.modelName}}</h3>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text><h5>Rp. {{loadedBarang.price}}
+      <br>Stok: {{loadedBarang.stock}}</h5></ion-text>
+    </ion-item>
+    <ion-item>Tentang Produk</ion-item>
+
+    <div *ngIf="loadedBarang.type === 'cpu'">
+      <ion-item lines="none">
+        <p>
+          Core = {{loadCpuDetail.coreCount}}
+          <br>Thread = {{loadCpuDetail.threadCount}}
+          <br>Base Clock = {{loadCpuDetail.baseClock}}
+        <br>Boost Clock = {{loadCpuDetail.boostClock}}</p>
+      </ion-item>
+    </div>
+
+    <div *ngIf="loadedBarang.type === 'gpu'">
+      <ion-item lines="none">
+        <p>
+          VRAM = {{loadGpuDetail.vramSize}}</p>
+      </ion-item>
+    </div>
+
+    <div *ngIf="loadedBarang.type === 'ram'">
+      <ion-item lines="none">
+        <p>
+          Size = {{loadRamDetail.size}}
+        <br>Speed Type = {{loadRamDetail.speedType}}</p>
+      </ion-item>
+    </div>
+
+    <div *ngIf="loadedBarang.type === 'motherboard'">
+      <ion-item lines="none">
+        <p>
+          Socket = {{loadMoboDetail.socket}}
+          <br>CPU Compatible = {{loadMoboDetail.cpuCompatible}}</p>
+      </ion-item>
+    </div>
+
+  </ion-list>
+
+</ion-content>
+
+

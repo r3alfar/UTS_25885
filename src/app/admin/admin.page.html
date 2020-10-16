@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start" menu="m1"></ion-menu-button>
+    <ion-title>
+      Admin
+    </ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button routerLink="add-barang">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" size-md="6" offset-md="3">
+        <ion-list>
+
+          <ion-item-sliding *ngFor="let item of barang" #slidingItem>
+            <ion-item-options side="start">
+              <ion-item-option [routerLink]="['./',item.id]">
+                <ion-icon name="create" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+
+          <ion-item [routerLink]="['./',item.id]">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="item.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{item.modelName}}</h2>
+              <p>Rp.{{item.price}}</p>
+              <p>Stok: {{item.stock}}</p>
+            </ion-label>
+          </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="deleteBarang(item.id)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

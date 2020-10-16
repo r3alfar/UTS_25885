@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start" menu="m1"></ion-menu-button>
+    <ion-title>
+      Home
+    </ion-title>
+
+    <div slot="end" (click)="onDisplayModeChange(1)" *ngIf="displayMode === 2">
+      <ion-buttons>
+        <ion-button>
+          <ion-icon name="list" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <div slot="end" (click)="onDisplayModeChange(2)" *ngIf="displayMode !== 2">
+      <ion-buttons>
+        <ion-button>
+          <ion-icon name="grid" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  *ngIf="displayMode ===1" >
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" size-md="6" offset-md="3">
+        <ion-list>
+          <ion-item lines="none" *ngFor="let item of barang" [routerLink]="['./', item.id]">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="item.imageUrl"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{item.modelName}}</h2>
+              <p>Rp.{{item.price}}</p>
+              <p>Stok: {{item.stock}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="displayMode === 2">
+    <ion-row>
+      <ion-col *ngFor="let item of barang" [routerLink]="['./', item.id]" size="6">
+        <ion-card>
+          <ion-card-header lines="none" >
+            <ion-img [src]="item.imageUrl"></ion-img>
+            <ion-card-title> {{item.modelName}} </ion-card-title>
+            <ion-text color="primary">
+              <p> Rp.{{item.price}} </p>
+            </ion-text>
+            <p> Tersedia: {{item.stock}} </p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

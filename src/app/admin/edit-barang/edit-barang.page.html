@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Barang</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Image URL</ion-label>
+        <ion-textarea formControlName="fImageUrl"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Brand Name</ion-label>
+        <ion-input type="text" formControlName="fBrandName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Model Name</ion-label>
+        <ion-input type="text" formControlName="fModelName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Harga</ion-label>
+        <ion-input type="text" formControlName="fPrice"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Stok</ion-label>
+        <ion-input type="number" min="1" max="99" formControlName="fStock"></ion-input>
+      </ion-item>
+
+      <div *ngIf="loadEditBarang.type === 'cpu'">
+        <ion-item>
+          <ion-label position="floating">Base Clock</ion-label>
+          <ion-input type="text"  formControlName="fBaseClock"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Boost Clock</ion-label>
+          <ion-input type="text"  formControlName="fBoostClock"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Core Count</ion-label>
+          <ion-input type="number" min="1000" max="100000000" formControlName="fCoreCount"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Thread COunt</ion-label>
+          <ion-input type="number" min="1000" max="100000000" formControlName="fThreadCount"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="loadEditBarang.type === 'gpu'">
+        <ion-item>
+          <ion-label position="floating">VRAM Size</ion-label>
+          <ion-input type="text"  formControlName="fVram"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="loadEditBarang.type === 'ram'">
+        <ion-item>
+          <ion-label position="floating">Size</ion-label>
+          <ion-input type="text"  formControlName="fSize"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Speed Type</ion-label>
+          <ion-input type="text"  formControlName="fSpeedType"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="loadEditBarang.type === 'motherboard'">
+        <ion-item>
+          <ion-label position="floating">Socket</ion-label>
+          <ion-input type="text"  formControlName="fSocket"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">CPU Compatible</ion-label>
+          <ion-input type="text"  formControlName="fCpuCompatible"></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-list>
+    <ion-button type="submit"
+                color="primary"
+                expand="block"
+                (click)="onSubmit()"
+                [disabled]="!form.valid">Edit Barang</ion-button>
+  </form>
+</ion-content>
+
+
+<!--<ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.get('name').valid && form.get('name').touched">
+        <ion-label>Nama tidak boleh kosong</ion-label>
+      </ion-item>-->

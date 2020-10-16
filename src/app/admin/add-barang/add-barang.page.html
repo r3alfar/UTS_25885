@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tambah Barang</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Image URL</ion-label>
+        <ion-textarea type="text"
+                      ngModel
+                      name="imageUrl"
+                      #ftImageUrlCtrl="ngModel"
+                      required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Jenis</ion-label>
+        <ion-select type="text"
+                    ngModel
+                    name="type"
+                    #typeCtrl="ngModel"
+                    placeholder="Select One" required>
+          <ion-select-option value="cpu">CPU</ion-select-option>
+          <ion-select-option value="gpu">GPU</ion-select-option>
+          <ion-select-option value="ram">RAM</ion-select-option>
+          <ion-select-option value="mobo">Motherboard</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Brand Name</ion-label>
+        <ion-input type="text"
+                   ngModel
+                   name="brandName"
+                   #brandCtrl="ngModel"
+                   required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Model Name</ion-label>
+        <ion-input type="text" ngModel name="modelName" #modelCtrl="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Harga</ion-label>
+        <ion-input type="text" ngModel name="price" #pricecCtrl="ngModel" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Stok</ion-label>
+        <ion-input type="number" ngModel name="stock" #stockCtrl="ngModel" required></ion-input>
+      </ion-item>
+
+      <div *ngIf="form.value.type === 'cpu'">
+        <ion-item>
+          <ion-label position="floating">Base Clock</ion-label>
+          <ion-input type="text"  ngModel name="baseClock" #baseCtrl="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Boost Clock</ion-label>
+          <ion-input type="text"  ngModel name="boostClock" #boostCtrl="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Core Count</ion-label>
+          <ion-input type="number" ngModel name="coreCount" #coreCtrl="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Thread COunt</ion-label>
+          <ion-input type="number" ngModel name="threadCount" #threadCtrl="ngModel" required></ion-input>
+        </ion-item>
+      </div>
+
+
+      <div *ngIf="form.value.type === 'gpu'">
+        <ion-item>
+          <ion-label position="floating">VRAM Size</ion-label>
+          <ion-input type="text" ngModel name="size" #vramCtrl="ngModel" required></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="form.value.type === 'ram'">
+        <ion-item>
+          <ion-label position="floating">Size</ion-label>
+          <ion-input type="text" ngModel name="size" #sizeCtrl="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Speed Type</ion-label>
+          <ion-input type="text" ngModel name="speedType" #speedCtrl="ngModel" required></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="form.value.type === 'mobo'">
+        <ion-item>
+          <ion-label position="floating">Socket</ion-label>
+          <ion-input type="text" ngModel name="socket" #socketCtrl="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">CPU Compatible</ion-label>
+          <ion-input type="text" ngModel name="cpuCompatible" #ccpuCtrl="ngModel"></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-list>
+    <ion-button type="submit"
+                color="primary"
+                expand="block"
+                [disabled]="!form.valid">Save Barang</ion-button>
+  </form>
+</ion-content>
