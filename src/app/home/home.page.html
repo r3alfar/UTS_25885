@@ -48,8 +48,8 @@
   <ion-grid *ngIf="displayMode === 2">
     <ion-row>
       <ion-col *ngFor="let item of barang" [routerLink]="['./', item.id]" size="6">
-        <ion-card>
-          <ion-card-header lines="none" >
+        <ion-card style="height: 100%">
+          <ion-card-header >
             <ion-img [src]="item.imageUrl"></ion-img>
             <ion-card-title> {{item.modelName}} </ion-card-title>
             <ion-text color="primary">
