@@ -1,2 +1,2 @@
-# UTS_IF733_25885
-sebagai tugas
+# UTS_25885
+sebagai tugas untuk melengkapi uts crossplatform mobile menggunakan ionic angular
